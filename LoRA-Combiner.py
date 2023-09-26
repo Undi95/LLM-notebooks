@@ -70,11 +70,11 @@ def BlendWithSLERP(aPath, bPath, outName, t=0.5):
     torch.save(a, outName)
     
     
-loraPath1 = "I:\\Aesir\\LoRA\\aesir-base-221-expanded-2\\adapter_model.bin"
-loraPath2 = "I:\\Aesir\\LoRA\\aesir-bare-big\\adapter_model.bin"
-savePath = "I:\\Aesir\\LoRA\\aesir-merge\\adapter_model.bin"
+loraPath1 = ".lora1/adapter_model.bin"
+loraPath2 = ".lora2/adapter_model.bin"
+savePath = ".loraResult/adapter_model.bin"
 
-BlendWithSLERP(loraPath1, loraPath2, savePath, 0.5)
+BlendWithSLERP(loraPath1, loraPath2, savePath, 0.6)
 
 
 
