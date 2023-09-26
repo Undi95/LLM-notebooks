@@ -57,19 +57,24 @@ def BlendWithSLERP(aPath, bPath, outName, t=0.5):
     b = torch.load(bPath, map_location="cpu")
 
     for key in tqdm(a.keys()):
-        
+
+        # If the key from a does not exist in b, continue to the next key
+        if key not in b:
+            continue
+
         # Ensure tensors are the same size
         if a[key].shape != b[key].shape:
             if a[key].shape[0] != b[key].shape[0]:
                 b[key] = resize_2D_tensor(b[key], (a[key].shape[0], b[key].shape[1]))
             else:
                 b[key] = resize_2D_tensor(b[key], (b[key].shape[0], a[key].shape[1]))
-        
+
         a[key] = slerp(a[key], b[key], t)
 
     torch.save(a, outName)
-    
-    
+
+
+
 loraPath1 = "/content/lora1/adapter_model.bin"
 loraPath2 = "/content/lora2/adapter_model.bin"
 savePath = "/content/loraResult/adapter_model.bin"
