@@ -70,9 +70,9 @@ def BlendWithSLERP(aPath, bPath, outName, t=0.5):
     torch.save(a, outName)
     
     
-loraPath1 = ".lora1/adapter_model.bin"
-loraPath2 = ".lora2/adapter_model.bin"
-savePath = ".loraResult/adapter_model.bin"
+loraPath1 = "/content/lora1/adapter_model.bin"
+loraPath2 = "/content/lora2/adapter_model.bin"
+savePath = "/content/loraResult/adapter_model.bin"
 
 BlendWithSLERP(loraPath1, loraPath2, savePath, 0.6)
 
